@@ -1,0 +1,39 @@
+
+body{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+
+.container-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+#editor{
+    resize: none;
+    height: 500px;
+    min-height: 500px;
+    width: 50%;
+    min-width: 100%;
+}
+
+.CodeMirror{
+    height: 500px;
+    min-height: 500px;
+    width: 50%;
+}
+
+#output{
+    height: 500px;
+    min-height: 500px;
+    /* overflow-y: auto; */
+    width: 50%;
+    resize: none;
+}

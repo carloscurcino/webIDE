@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/index.js"></script>
+    <title>Web IDE</title>
+
+    <link rel="stylesheet" href="style.css">
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/dracula.min.css">
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/edit/closebrackets.min.js"></script>
+
+    <!-- Pyodide -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.27.3/full/pyodide.js"></script>
+    <script src="./libs/pyodide.js"></script>
+</head>
+
+<body>
+    <h1>Web IDE</h1>
+
+    <div class="container-buttons">
+        <button onclick="runCode()" id="run-btn">RUN</button>
+
+        <div>
+            <p>CONSOLE</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <textarea id="editor"></textarea>
+        <textarea id="output" readonly></textarea>
+    </div>
+
+    <button onclick="clearConsole()">clear</button>
+
+    <script src="./libs/codemirror.js"></script>
+</body>
+
+</html>
