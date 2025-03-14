@@ -26,19 +26,15 @@
     <h1>Web IDE</h1>
 
     <div class="container-buttons">
-        <button onclick="runCode()" id="run-btn">RUN</button>
-
-        <div>
-            <p>CONSOLE</p>
-        </div>
+        <button class="btn" onclick="runCode()" id="run-btn">RUN</button>
     </div>
 
     <div class="container">
         <textarea id="editor"></textarea>
-        <textarea id="output" readonly></textarea>
+        <textarea id="output" readonly disabled></textarea>
     </div>
 
-    <button onclick="clearConsole()">clear</button>
+    <button class="btn" onclick="clearConsole()">clear</button>
 
     <script src="./libs/codemirror.js"></script>
 </body>
