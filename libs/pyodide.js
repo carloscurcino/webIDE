@@ -16,27 +16,28 @@ async function runCode() {
     let code = document.getElementById("editor").value;
     let output = document.getElementById("output");
     let btn = document.getElementById("run-btn");
-    btn.innerText = "STOP"
+    btn.innerText = "STOP";
 
-    let pyodide = await loadPyodide();
+    // Cria um novo Worker
+    let worker = new Worker('./js/worker.js');
 
-    // Redireciona a saída padrão do Python para uma variável
-    pyodide.runPython(`
-        import sys
-        from io import StringIO
-        sys.stdout = StringIO()
-        `);
-    console.log(code, typeof code)
-    // Executa o código Python
-    try {
-        pyodide.runPython(code);
-        // Obtém a saída padrão do Python
-        let result = pyodide.runPython("sys.stdout.getvalue()");
-        // Exibe a saída no textarea
-        output.value = result;
-    } catch (err) {
-        output.value = `Erro ao executar o código Python: ${err}`;
-    } finally {
-        btn.innerText = "RUN"
-    }
+    // Envia o código Python para o Worker
+    worker.postMessage({ code });
+
+    // Recebe a mensagem do Worker
+    worker.onmessage = function (event) {
+        const { result, error } = event.data;
+        if (result) {
+            output.value = result;
+        } else if (error) {
+            output.value = error;
+        }
+        btn.innerText = "RUN";
+    };
+
+    // Trata erros do Worker
+    worker.onerror = function (error) {
+        output.value = `Erro no Worker: ${error.message}`;
+        btn.innerText = "RUN";
+    };
 }
