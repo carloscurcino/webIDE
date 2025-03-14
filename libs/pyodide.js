@@ -16,6 +16,7 @@ async function runCode() {
     let code = document.getElementById("editor").value;
     let output = document.getElementById("output");
     let btn = document.getElementById("run-btn");
+    output.classList.remove("error");
     btn.innerText = "STOP";
 
     // Cria um novo Worker
@@ -31,6 +32,7 @@ async function runCode() {
             output.value = result;
         } else if (error) {
             output.value = error;
+            output.classList.add("error");
         }
         btn.innerText = "RUN";
     };

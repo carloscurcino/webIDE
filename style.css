@@ -44,7 +44,7 @@ body{
     resize: none;
     background-color: #282a36;
     border: none;
-    color: white;
+    /* color: white; */
 }
 
 .btn {
@@ -64,4 +64,9 @@ body{
 .btn:hover {
     background-color: #0363b2;
     color: white;
+}
+
+.error {
+    color:  rgb(183, 6, 6);
+    font-weight: bold;
 }
