@@ -1,8 +1,11 @@
-
+* {
+    /* background-color: #292d34; */
+}
 body{
     flex-direction: column;
     display: flex;
     justify-content: center;
+    background-color: #000000;
 }
 
 .container-buttons{
@@ -13,8 +16,9 @@ body{
 .container{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
+    margin-bottom: 10px;
 }
 #editor{
     resize: none;
@@ -22,18 +26,42 @@ body{
     min-height: 500px;
     width: 50%;
     min-width: 100%;
+  
 }
 
 .CodeMirror{
     height: 500px;
     min-height: 500px;
-    width: 50%;
+    width: 49%;
+    border: 1px solid #44475a;
 }
 
 #output{
-    height: 500px;
-    min-height: 500px;
+    height: 496px;
+    min-height: 496px;
     /* overflow-y: auto; */
-    width: 50%;
+    width: 49%;
     resize: none;
+    background-color: #282a36;
+    border: none;
+    color: white;
+}
+
+.btn {
+    background-color: rgb(5 142 255);
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 8px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0363b2;
+    color: white;
 }
