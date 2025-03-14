@@ -17,10 +17,22 @@ async function runCode() {
     let output = document.getElementById("output");
     let btn = document.getElementById("run-btn");
     output.classList.remove("error");
+
+    let worker = new Worker('./js/worker.js');
+    if (btn.innerText === "STOP") {
+        // Envia a mensagem de interrupção para o Worker
+        if (worker) {
+            worker.postMessage('stop');
+            worker.terminate();
+            worker = null;
+        }
+        btn.innerText = "RUN";
+        return;
+    }
+
     btn.innerText = "STOP";
 
     // Cria um novo Worker
-    let worker = new Worker('./js/worker.js');
 
     // Envia o código Python para o Worker
     worker.postMessage({ code });
