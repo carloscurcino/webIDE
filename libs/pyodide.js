@@ -23,8 +23,11 @@ async function runCode() {
         // Envia a mensagem de interrupção para o Worker
         if (worker) {
             worker.postMessage('stop');
+            console.log("Parando o código")
             worker.terminate();
             worker = null;
+
+            console.log("worker", worker)
         }
         btn.innerText = "RUN";
         return;
@@ -32,15 +35,12 @@ async function runCode() {
 
     btn.innerText = "STOP";
 
-    // Cria um novo Worker
-
-    // Envia o código Python para o Worker
-    worker.postMessage({ code });
+    if (worker && worker !== null) worker.postMessage({ code });
 
     // Recebe a mensagem do Worker
     worker.onmessage = function (event) {
         const { result, error } = event.data;
-        if (result) {
+        if (result && worker !== null) {
             output.value = result;
         } else if (error) {
             output.value = error;
@@ -49,7 +49,6 @@ async function runCode() {
         btn.innerText = "RUN";
     };
 
-    // Trata erros do Worker
     worker.onerror = function (error) {
         output.value = `Erro no Worker: ${error.message}`;
         btn.innerText = "RUN";
